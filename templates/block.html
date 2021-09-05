@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-4">
+            <h2>Block {{ block.number }}</h2>
+            <table class="table table-striped mt-4">
+                <tr>
+                    <td>Timestamp</td>
+                    <td>{{ block.timestamp }}</td>
+                </tr>
+                <tr>
+                    <td>Transactions</td>
+                    <td><a href="/transactions"></a>{{ block.transactions|length }} transactions</a></td>
+                </tr>
+                <tr>
+                    <td>Miner</td>
+                    <td>
+                        <a href="/address?address={{ block.miner }}">{{ block.miner }}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Size</td>
+                    <td>{{ block.size }}</td>
+                </tr>
+                <tr>
+                    <td>Gas Limit</td>
+                    <td>{{ block.gasLimit }}</td>
+                </tr>
+                <tr>
+                    <td>Gas Used</td>
+                    <td>{{ block.gasUsed }}</td>
+                </tr>
+                <tr>
+                    <td>Base Fee Per Gas</td>
+                    <td>{{ block.baseFeePerGas }}</td>
+                </tr>
+                <tr>
+                    <td>Difficulty</td>
+                    <td>{{ block.difficulty }}</td>
+                </tr>
+                <tr>
+                    <td>Total Difficulty</td>
+                    <td>{{ block.totalDifficulty }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

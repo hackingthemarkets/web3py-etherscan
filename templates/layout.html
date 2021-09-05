@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>etherbrowse</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div style="background: black;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <a href="/" class="navbar-brand" style="color: white"><h1>etherbrowse</h1></a>
+                        <form class="d-flex" action="/address" method="get">
+                            <input class="form-control" placeholder="search by address" name="address" type="text" />&nbsp;
+                            <button class="btn btn-primary" type="submit">search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

@@ -1,2 +1,3 @@
-# web3py-etherscan
-Build your own Etherscan with web3.p6
+export FLASK_APP=app
+export FLASK_ENV=development
+flask run

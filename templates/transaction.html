@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h3> Transaction {{ tx.hash.hex() }}</h3>
+
+    <table class="table table-striped mt-4">
+        <tr>
+            <td>block number</td>
+            <td>
+                <a href="/block/{{ tx.blockNumber }}">{{ tx.blockNumber }}</a>
+            </td>
+        </tr>
+        <tr>
+            <td>from</td>
+            <td>{{ tx.from }}</td>
+        </tr>
+        <tr>
+            <td>to</td>
+            <td>{{ tx.to }}</td>
+        </tr>
+        <tr>
+            <td>value</td>
+            <td>{{ value }} Ether</td>
+        </tr>
+        <tr>
+            <td>gas used</td>
+            <td>{{ receipt.gasUsed }}</td>
+        </tr>
+        <tr>
+            <td>gas price</td>
+            <td>{{ tx.gasPrice / 1000000000 }} Gwei</td>
+        </tr>
+        <tr>
+            <td>transaction fee</td>
+            <td>
+                {{ receipt.gasUsed * gas_price }} Ether 
+                (${{ (receipt.gasUsed * gas_price)|float * ethereum_price['last'] }})
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}

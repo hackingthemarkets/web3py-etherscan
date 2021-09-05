@@ -1,0 +1,3 @@
+web3
+flask==2.0
+ccxt

@@ -1,5 +1,6 @@
 import config, time, ccxt
-from flask import Flask, render_template, request, flash, redirect
+from flask import Flask, render_template, request, flash, redirect, url_for
+from werkzeug.urls import url_parse
 from web3 import Web3
 
 app = Flask(__name__, template_folder="templates")
@@ -13,7 +14,7 @@ def get_ethereum_price():
 
     return ethereum_price
 
-@app.get("/")
+@app.route("/")
 def index():
     eth = w3.eth
 
@@ -39,7 +40,7 @@ def index():
         latest_blocks=latest_blocks,
         latest_transactions=latest_transactions)
 
-@app.get("/address")
+@app.route("/address")
 def address():
     address = request.args.get('address')
 
@@ -56,13 +57,13 @@ def address():
     
     return render_template('address.html', ethereum_price=ethereum_price, address=address, balance=balance)
 
-@app.get("/block/<block_number>")
+@app.route("/block/<block_number>")
 def block(block_number):
     block = w3.eth.get_block(int(block_number))
     
     return render_template('block.html', block=block)
 
-@app.get('/transaction/<hash>')
+@app.route('/transaction/<hash>')
 def transaction(hash):
     tx = w3.eth.get_transaction(hash)
     value = w3.fromWei(tx.value, 'ether')

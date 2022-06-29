@@ -2,11 +2,15 @@ import config, time, ccxt
 from flask import Flask, render_template, request, flash, redirect, url_for
 from werkzeug.urls import url_parse
 from web3 import Web3
+import os
+import requests
+from dotenv import load_dotenv 
+load_dotenv()
 
 app = Flask(__name__, template_folder="templates")
 app.config['SECRET_KEY'] = 'somerandomstring'
 
-w3 = Web3(Web3.HTTPProvider(config.INFURA_URL))
+w3 = Web3(Web3.HTTPProvider(os.getenv("INFURA_URL")))
 
 def get_ethereum_price():
     binance = ccxt.binance()

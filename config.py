@@ -1,4 +1,4 @@
-INFURA_URL = "https://mainnet.infura.io/v3/<your_infura_url>"
+#INFURA_URL = "https://mainnet.infura.io/v3/<your_infura_url>"
 
 MINERS = {
     "0x00192fb10df37c9fb26829eb2cc623cd1bf599e8":"2Miners: PPLNS",
